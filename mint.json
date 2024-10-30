@@ -30,13 +30,6 @@
   ],
   "anchors": [
     {
-      "name": "Documentação",
-      "icon": "book-open-cover",
-      "pages": [
-        "introduction"
-      ]
-    },
-    {
       "name": "Site",
       "icon": "newspaper",
       "url": "https://www.precfy.com.br/"
@@ -44,7 +37,7 @@
   ],
   "navigation": [
     {
-      "group": "Get Started",
+      "group": "",
       "pages": [
         "introduction",
         "quickstart",
