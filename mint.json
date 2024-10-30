@@ -30,19 +30,14 @@
   ],
   "anchors": [
     {
-      "name": "Documentation",
+      "name": "Documentação",
       "icon": "book-open-cover",
       "url": "https://mintlify.com/docs"
     },
     {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
-    },
-    {
-      "name": "Blog",
+      "name": "Site",
       "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
+      "url": "https://www.precfy.com.br/"
     }
   ],
   "navigation": [
