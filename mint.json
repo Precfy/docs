@@ -3,6 +3,7 @@
   "name": "API Docs",
   "theme": "prism",
   "logo": {
+    "dark": "/logo/light.svg",
     "light": "/logo/light.svg"
   },
   "favicon": "/favicon.svg",
