@@ -32,7 +32,10 @@
     {
       "name": "Documentação",
       "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
+      "pages": [
+        "introduction"
+      ]
+     // "url": "https://mintlify.com/docs"
     },
     {
       "name": "Site",
