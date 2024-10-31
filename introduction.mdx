@@ -25,6 +25,88 @@ File: (obrigatório) o arquivo PDF que será enviado para a API. Deve estar no f
 Exemplo: 'file=@"/caminho/do/arquivo.pdf"
 
 4. Exemplo de Requisição usando cURL
+
+```mdx bash
+curl --location 'https://precfy-api.azurewebsites.net/api/67158a3399a43a6f8fbd69ee/precatorio/parse' \
+--form 'file=@"/caminho/do/arquivo/OficioRequisitorio.pdf"' \
+--form 'CORRECAO_MONETARIA="true"' \
+--form 'CALCULAR_IMPOSTOS="true"' \
+--form 'DESTACAR_HONORARIOS="true"' \
+--form 'CREDOR_FULL_DATA="true"' \
+--form 'ADVOGADO_FULL_DATA="true"'
+```
+
+5. Exemplo de Requisição no Postman
+
+Se preferir utilizar o Postman, siga estes passos:
+- Método: POST
+- URL: https://precfy-api.azurewebsites.net/api/{partnerId}/precatorio/parse
+- Body: 
+  - Selecione a opção form-data.
+  - File: Adicione o PDF como um arquivo.
+  - CORRECAO_MONETARIA: Adicione este campo com o valor true ou false, conforme necessário.
+  - CALCULAR_IMPOSTOS: Adicione este campo com o valor true ou false, conforme necessário.
+  - DESTACAR_HONORARIOS: Adicione este campo com o valor true ou false, conforme necessário.
+  - CREDOR_FULL_DATA: Adicione este campo com o valor true ou false, conforme necessário.
+  - ADVOGADO_FULL_DATA: Adicione este campo com o valor true ou false, conforme necessário.
+
+6. Exemplo de Resposta <br/>
+Aqui está uma resposta JSON fictícia com estrutura similar ao exemplo original:
+
+```mdx bash
+{
+  "success": true,
+  "requestId": "abc12345-1234-5678-abc1-23456789abcd",
+  "createdAt": "2024-10-30T12:00:00Z",
+  "responseInSeconds": 0.75,
+  "cost": 1.0,
+  "fileHash": "abcdef1234567890abcdef1234567890",
+  "content": {
+    "processoPrecatorioNumero": "1234567-89.2024.4.01.0000",
+    "processoOriginario": "9876543-21.2024.4.01.0000",
+    "numeroRequisicao": "2024.0000.001.000001",
+    "esfera": "FEDERAL",
+    "natureza": "COMUM",
+    "assunto": "Assunto do Processo",
+    "vara": "1ª VARA - CIDADE",
+    "cidade": "Cidade Exemplo",
+    "estado": "EX",
+    "advogadoPatrono": {
+      "nome": "João da Silva",
+      "oab": "EX12345",
+      "cpf": "123.456.789-10"
+    },
+    "requerentePrincipal": "Maria Oliveira",
+    "tribunal": "TRF1",
+    "devedor": {
+      "nome": "Nome do Devedor",
+      "esfera": "FEDERAL"
+    },
+    "dataExpedicao": "2024-10-01T00:00:00Z",
+    "dataCadastro": "2024-10-01T00:00:00Z",
+    "valorTotalRequisitado": 1000000.0,
+    "loa": {
+      "anoOrcamento": 2024,
+      "inicio": "2024-01-01T00:00:00",
+      "fim": "2024-12-31T23:59:59.999",
+      "limitePagamento": "2025-12-31T23:59:59.999"
+    },
+    "credores": [
+      {
+        "id": 1,
+        "tipo": "BENEFICIARIO",
+        "cpfCnpj": "123.456.789-00",
+        "nome": "Maria Oliveira",
+        "valorRequisitado": 1000000.0
+      }
+    ],
+    "warnings": []
+  },
+  "errors": []
+}
+```
+
+
 <CardGroup cols={2}>
   <Card
     title="Edit Your Docs"
