@@ -9,13 +9,12 @@ O JSON de resposta inclui campos detalhados, como o número do processo, tribuna
 
 Essa API é uma solução robusta para facilitar a integração de dados legais e assegurar que os sistemas dos clientes estejam atualizados de maneira prática e eficiente.
 
-## Setting up
 
 1. Endpoint da API <br/>
 URL: https://precfy-api.azurewebsites.net/api/{partnerId}/precatorio/parse <br/>
 Método: POST
 
-Descrição: Este endpoint permite o upload de um arquivo PDF contendo um ofício requisitório de precatório. A API analisa o conteúdo do documento e retorna um JSON estruturado com as informações extraídas.
+    Descrição: Este endpoint permite o upload de um arquivo PDF contendo um ofício requisitório de precatório. A API analisa o conteúdo do documento e retorna um JSON estruturado com as informações extraídas.
 
 2. Cabeçalhos Necessários <br/>
 A API não utiliza um token de autenticação, mas se necessário, o cabeçalho Authorization pode ser adicionado para maior segurança, por exemplo: Authorization: Bearer < seu_token_aqui >.
@@ -39,16 +38,16 @@ curl --location 'https://precfy-api.azurewebsites.net/api/67158a3399a43a6f8fbd69
 5. Exemplo de Requisição no Postman
 
 Se preferir utilizar o Postman, siga estes passos:
-- Método: POST
-- URL: https://precfy-api.azurewebsites.net/api/{partnerId}/precatorio/parse
-- Body: 
-  - Selecione a opção form-data.
-  - File: Adicione o PDF como um arquivo.
-  - CORRECAO_MONETARIA: Adicione este campo com o valor true ou false, conforme necessário.
-  - CALCULAR_IMPOSTOS: Adicione este campo com o valor true ou false, conforme necessário.
-  - DESTACAR_HONORARIOS: Adicione este campo com o valor true ou false, conforme necessário.
-  - CREDOR_FULL_DATA: Adicione este campo com o valor true ou false, conforme necessário.
-  - ADVOGADO_FULL_DATA: Adicione este campo com o valor true ou false, conforme necessário.
+  - Método: POST
+  - URL: https://precfy-api.azurewebsites.net/api/{partnerId}/precatorio/parse
+  - Body: 
+    - Selecione a opção form-data.
+    - File: Adicione o PDF como um arquivo.
+    - CORRECAO_MONETARIA: Adicione este campo com o valor true ou false, conforme necessário.
+    - CALCULAR_IMPOSTOS: Adicione este campo com o valor true ou false, conforme necessário.
+    - DESTACAR_HONORARIOS: Adicione este campo com o valor true ou false, conforme necessário.
+    - CREDOR_FULL_DATA: Adicione este campo com o valor true ou false, conforme necessário.
+    - ADVOGADO_FULL_DATA: Adicione este campo com o valor true ou false, conforme necessário.
 
 6. Exemplo de Resposta <br/>
 Aqui está uma resposta JSON fictícia com estrutura similar ao exemplo original:
