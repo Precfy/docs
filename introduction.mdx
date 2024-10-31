@@ -11,8 +11,20 @@ Essa API é uma solução robusta para facilitar a integração de dados legais 
 
 ## Setting up
 
-The first step to world-class documentation is setting up your editing environments.
+1. Endpoint da API <br/>
+URL: https://precfy-api.azurewebsites.net/api/{partnerId}/precatorio/parse <br/>
+Método: POST
 
+Descrição: Este endpoint permite o upload de um arquivo PDF contendo um ofício requisitório de precatório. A API analisa o conteúdo do documento e retorna um JSON estruturado com as informações extraídas.
+
+2. Cabeçalhos Necessários <br/>
+A API não utiliza um token de autenticação, mas se necessário, o cabeçalho Authorization pode ser adicionado para maior segurança, por exemplo: Authorization: Bearer < seu_token_aqui >.
+
+3. Parâmetros da Requisição <br/>
+File: (obrigatório) o arquivo PDF que será enviado para a API. Deve estar no formato multipart/form-data. <br/>
+Exemplo: 'file=@"/caminho/do/arquivo.pdf"
+
+4. Exemplo de Requisição usando cURL
 <CardGroup cols={2}>
   <Card
     title="Edit Your Docs"
