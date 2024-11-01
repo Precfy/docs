@@ -3,26 +3,39 @@ title: 'Introduction'
 description: 'Example section for showcasing API endpoints'
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
+## Endpoint de Processamento de Precatórios
 
-## Welcome
+#### POST
+/api/partnerId/precatorio/parse
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+Esse endpoint permite o envio de um arquivo PDF contendo o documento de precatório para extração de dados e realiza cálculos conforme os parâmetros fornecidos.
 
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
+## Request
 
-## Authentication
+#### URL:
+https://precfy-api.azurewebsites.net/api/{partnerId}/precatorio/parse
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+Método: POST
+
+### Path Parameters
+
+| Parâmetro | Tipo    | Obrigatório | Descrição |
+| --------- | -------- | ----------- | --------- |
+| partnerId	| String   | Sim         | Identificador exclusivo do parceiro, necessário para acessar a API. |
+
+### Form Data Parameters
+
+| Parâmetro | Tipo    | Obrigatório | Padrão | Descrição |
+| --------- | ------- | ----------- | ------ | --------- |
+| file | Arquivo | Sim | - | Arquivo PDF do precatório a ser processado. |
+| CORRECAO_MONETARIA | String | Não | false | Define se a correção monetária deve ser aplicada (true ou false). |
+| CALCULAR_IMPOSTOS | String | Não | false | Define se os impostos devem ser calculados sobre o valor (true ou false). |
+| DESTACAR_HONORARIOS | String | Não | false | Indica se os honorários serão destacados na resposta (true ou false). |
+| CREDOR_FULL_DATA	 | String | Não | false | Indica se todos os dados do credor devem ser incluídos (true ou false). |
+| ADVOGADO_FULL_DATA | String | Não | false | Define se todos os dados do advogado devem ser incluídos (true ou false). |
+
+### Exemplo de Requisição
+
 
 ```json
 "security": [
