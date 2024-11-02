@@ -6,7 +6,7 @@
     "description": "API para extrair e estruturar dados de ofícios requisitórios de precatórios em documentos PDF."
   },
   "paths": {
-    "/convert-pdf": {
+    "/parse": {
       "post": {
         "summary": "Converte PDF em JSON",
         "description": "Recebe um PDF e retorna o conteúdo como JSON.",
