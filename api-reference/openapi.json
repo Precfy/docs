@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "OpenAPI Plant Store",
-    "description": "A sample API that uses a plant store as an example to demonstrate features in the OpenAPI specification",
+    "title": "Precfy API - Ofícios Requisitórios de Precatórios",
+    "description": "API para extrair e estruturar dados de Ofícios Requisitórios de Precatórios a partir de arquivos PDF, retornando informações em JSON prontas para integração.",
     "license": {
       "name": "MIT"
     },
@@ -19,7 +19,7 @@
     }
   ],
   "paths": {
-    "/plants": {
+    "/precfy": {
       "post": {
         "description": "Extrai dados estruturados de um Ofício de Requisição de Precatório a partir de um arquivo PDF.",
         "requestBody": {
