@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Precfy API - Ofícios Requisitórios de Precatórios",
-    "description": "API para extrair e estruturar dados de Ofícios Requisitórios de Precatórios a partir de arquivos PDF, retornando informações em JSON prontas para integração.",
+    "description": "API para extrair e estruturar dados de Ofícios Requisitórios de Precatórios a partir de arquivos PDF.",
     "license": {
       "name": "MIT"
     },
