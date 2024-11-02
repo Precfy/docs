@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Precfy API - Ofícios Requisitórios de Precatórios",
-    "description": "API para extrair e estruturar dados de OR.",
+    "description": "",
     "license": {
       "name": "MIT"
     },
