@@ -67,8 +67,9 @@
         "type": "object",
         "properties": {
           "file": {
-            "description": "The name of the plant",
-            "type": "file"
+            "description": "Arquivo PDF para análise e extração",
+            "type": "file",
+            "format": "binary"
           },
           "CORRECAO_MONETARIA": {
             "description": "Define se a correção monetária deve ser aplicada",
