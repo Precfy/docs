@@ -1,9 +1,9 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "PDF to JSON Converter API",
+    "title": "API de Leitura de Ofícios Requisitórios de Precatórios",
     "version": "1.0.0",
-    "description": "API para conversão de arquivos PDF em JSON."
+    "description": "API para extrair e estruturar dados de ofícios requisitórios de precatórios em documentos PDF."
   },
   "paths": {
     "/convert-pdf": {
