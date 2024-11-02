@@ -1,63 +1,68 @@
 {
-  "openapi": "3.0.1",
+  "openapi": "3.0.0",
   "info": {
-    "title": "Precfy API - Ofícios Requisitórios de Precatórios",
-    "description": "API para extrair e estruturar dados de Ofícios Requisitórios de Precatórios a partir de arquivos PDF, retornando informações em JSON prontas para integração.",
+    "title": "PDF to JSON Converter API",
     "version": "1.0.0",
-    "license": {
-      "name": "MIT"
-    }
+    "description": "API para conversão de arquivos PDF em JSON."
   },
-  "servers": [
-    {
-      "url": "https://precfy-api.azurewebsites.net/api/{partnerId}/precatorio/"
-    }
-  ],
-  "security": [
-    {
-      "bearerAuth": []
-    }
-  ],
   "paths": {
-    "/precfy": {
+    "/convert-pdf": {
       "post": {
-        "description": "Extrai dados estruturados de um Ofício de Requisição de Precatório a partir de um arquivo PDF.",
+        "summary": "Converte PDF em JSON",
+        "description": "Recebe um PDF e retorna o conteúdo como JSON.",
         "requestBody": {
-          "description": "PDF do Ofício de Precatório e parâmetros opcionais de configuração",
           "required": true,
           "content": {
             "multipart/form-data": {
               "schema": {
-                "type": "object",
-                "properties":  {
-                  "file": {
-                    "type": "string",
-                    "format": "binary",
-                    "description": "Arquivo PDF para análise e extração"
-                  }
-                }
+                "$ref": "#/components/schemas/PdfFile"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Dados extraídos do Ofício de Requisição de Precatório",
+            "description": "JSON gerado com sucesso",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ParseResponse"
+                  "$ref": "#/components/schemas/JsonResponse"
                 }
               }
             }
           },
           "400": {
-            "description": "Erro inesperado",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
+            "description": "Requisição inválida"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PdfFile": {
+        "type": "object",
+        "properties": {
+          "file": {
+            "type": "string",
+            "format": "binary",
+            "description": "Arquivo PDF para conversão"
+          }
+        }
+      },
+      "JsonResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "success"
+          },
+          "data": {
+            "type": "object",
+            "description": "Conteúdo do PDF convertido em JSON",
+            "properties": {
+              "pageContent": {
+                "type": "string"
               }
             }
           }
