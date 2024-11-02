@@ -66,13 +66,13 @@
         ],
         "type": "object",
         "properties": {
-          "name": {
+          "file": {
             "description": "The name of the plant",
             "type": "file"
           },
-          "tag": {
-            "description": "Tag to specify the type",
-            "type": "string"
+          "CORRECAO_MONETARIA": {
+            "description": "Define se a correção monetária deve ser aplicada",
+            "type": "boolean"
           }
         }
       },
@@ -81,16 +81,7 @@
           "error",
           "message"
         ],
-        "type": "object",
-        "properties": {
-          "error": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "message": {
-            "type": "string"
-          }
-        }
+        "type": "object"
       }
     },
     "securitySchemes": {
