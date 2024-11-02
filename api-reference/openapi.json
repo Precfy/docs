@@ -10,7 +10,7 @@
   },
   "servers": [
     {
-      "url": "http://sandbox.mintlify.com"
+      "url": "https://precfy-api.azurewebsites.net/api/67158a3399a43a6f8fbd69ee/precatorio/"
     }
   ],
   "security": [
