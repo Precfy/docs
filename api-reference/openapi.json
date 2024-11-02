@@ -27,7 +27,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPlant"
+                "$ref": "#/components/schemas/NewPrecfy"
               }
             }
           },
@@ -39,7 +39,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Plant"
+                  "$ref": "#/components/schemas/Precfy"
                 }
               }
             }
@@ -60,7 +60,7 @@
   },
   "components": {
     "schemas": {
-      "Plant": {
+      "Precfy": {
         "required": [
           "name"
         ],
@@ -76,10 +76,10 @@
           }
         }
       },
-      "NewPlant": {
+      "NewPrecfy": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/Plant"
+            "$ref": "#/components/schemas/Precfy"
           },
           {
             "required": [
