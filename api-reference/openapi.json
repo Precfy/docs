@@ -21,9 +21,9 @@
   "paths": {
     "/plants": {
       "post": {
-        "description": "onde é isso?",
+        "description": "Extrai dados estruturados de um Ofício de Requisição de Precatório a partir de um arquivo PDF.",
         "requestBody": {
-          "description": "Plant to add to the store",
+          "description": "PDF do Ofício de Precatório e parâmetros opcionais de configuração",
           "content": {
             "application/json": {
               "schema": {
