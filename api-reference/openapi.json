@@ -68,33 +68,13 @@
         "properties": {
           "name": {
             "description": "The name of the plant",
-            "type": "string"
+            "type": "file"
           },
           "tag": {
             "description": "Tag to specify the type",
             "type": "string"
           }
         }
-      },
-      "NewPrecfy": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Precfy"
-          },
-          {
-            "required": [
-              "id"
-            ],
-            "type": "object",
-            "properties": {
-              "id": {
-                "description": "Identification number of the plant",
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ]
       },
       "Error": {
         "required": [
