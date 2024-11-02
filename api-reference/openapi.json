@@ -1,62 +1,38 @@
 {
-  "openapi": "3.0.1",
+  "openapi": "3.0.0",
   "info": {
-    "title": "API de Leitura de Ofícios Requisitórios de Precatórios",
-    "description": "API para extrair e estruturar dados de ofícios requisitórios de precatórios em documentos PDF.",
-    "version": "1.0.0"
+    "title": "PDF to JSON Converter API",
+    "version": "1.0.0",
+    "description": "API para conversão de arquivos PDF em JSON."
   },
-  "servers": [
-    {
-      "url": "https://precfy-api.azurewebsites.net/api/{partnerId}/precatorio"
-    }
-  ],
   "paths": {
-    "/parse": {
+    "/convert-pdf": {
       "post": {
-        "summary": "Converte PDF de precatório em JSON",
-        "description": "Recebe um PDF de ofício requisitório e retorna dados estruturados em JSON.",
-        "parameters": [
-          {
-            "name": "partnerId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "description": "Identificador do parceiro que está utilizando a API."
-          }
-        ],
+        "summary": "Converte PDF em JSON",
+        "description": "Recebe um PDF e retorna o conteúdo como JSON.",
         "requestBody": {
-          "description": "PDF e parâmetros adicionais",
+          "required": true,
           "content": {
             "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/ParseRequest"
+                "$ref": "#/components/schemas/PdfFile"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
-            "description": "Dados extraídos com sucesso",
+            "description": "JSON gerado com sucesso",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ParseResponse"
+                  "$ref": "#/components/schemas/JsonResponse"
                 }
               }
             }
           },
           "400": {
-            "description": "Erro na requisição",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "description": "Requisição inválida"
           }
         }
       }
@@ -64,99 +40,32 @@
   },
   "components": {
     "schemas": {
-      "ParseRequest": {
+      "PdfFile": {
         "type": "object",
         "properties": {
           "file": {
             "type": "string",
             "format": "binary",
-            "description": "Arquivo PDF do ofício requisitório de precatório."
-          },
-          "CORRECAO_MONETARIA": {
-            "type": "string",
-            "enum": ["true", "false"],
-            "description": "Aplica correção monetária aos valores do precatório."
-          },
-          "CALCULAR_IMPOSTOS": {
-            "type": "string",
-            "enum": ["true", "false"],
-            "description": "Realiza o cálculo de impostos sobre os valores."
-          },
-          "DESTACAR_HONORARIOS": {
-            "type": "string",
-            "enum": ["true", "false"],
-            "description": "Destaca honorários advocatícios no retorno."
-          },
-          "CREDOR_FULL_DATA": {
-            "type": "string",
-            "enum": ["true", "false"],
-            "description": "Retorna dados completos do credor."
-          },
-          "ADVOGADO_FULL_DATA": {
-            "type": "string",
-            "enum": ["true", "false"],
-            "description": "Retorna dados completos do advogado."
-          }
-        },
-        "required": ["file"]
-      },
-      "ParseResponse": {
-        "type": "object",
-        "properties": {
-          "success": { "type": "boolean" },
-          "requestId": { "type": "string", "description": "ID único da requisição." },
-          "createdAt": { "type": "string", "format": "date-time", "description": "Data de criação da requisição." },
-          "content": {
-            "type": "object",
-            "properties": {
-              "processoPrecatorioNumero": { "type": "string" },
-              "processoOriginario": { "type": "string" },
-              "numeroRequisicao": { "type": "string" },
-              "esfera": { "type": "string" },
-              "natureza": { "type": "string" },
-              "assunto": { "type": "string" },
-              "vara": { "type": "string" },
-              "cidade": { "type": "string" },
-              "estado": { "type": "string" },
-              "advogadoPatrono": {
-                "type": "object",
-                "properties": {
-                  "nome": { "type": "string" },
-                  "oab": { "type": "string" },
-                  "cpf": { "type": "string" }
-                }
-              },
-              "requerentePrincipal": { "type": "string" },
-              "tribunal": { "type": "string" },
-              "devedor": {
-                "type": "object",
-                "properties": {
-                  "nome": { "type": "string" },
-                  "esfera": { "type": "string" }
-                }
-              },
-              "dataExpedicao": { "type": "string", "format": "date" },
-              "valorTotalRequisitado": { "type": "number" },
-              "credores": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "nome": { "type": "string" },
-                    "cpfCnpj": { "type": "string" },
-                    "valorRequisitado": { "type": "number" }
-                  }
-                }
-              }
-            }
+            "description": "Arquivo PDF para conversão"
           }
         }
       },
-      "ErrorResponse": {
+      "JsonResponse": {
         "type": "object",
         "properties": {
-          "error": { "type": "integer" },
-          "message": { "type": "string" }
+          "status": {
+            "type": "string",
+            "example": "success"
+          },
+          "data": {
+            "type": "object",
+            "description": "Conteúdo do PDF convertido em JSON",
+            "properties": {
+              "pageContent": {
+                "type": "string"
+              }
+            }
+          }
         }
       }
     }
