@@ -9,7 +9,7 @@
     "/parse": {
       "post": {
         "summary": "Converte PDF em JSON",
-        "description": "Recebe um PDF e retorna o conteúdo como JSON.",
+        "description": "API de Leitura de Ofícios Requisitórios de Precatórios",
         "requestBody": {
           "required": true,
           "content": {
@@ -47,6 +47,11 @@
             "type": "string",
             "format": "binary",
             "description": "Arquivo PDF para conversão"
+          }, 
+          "CORRECAO_MONETARIA": {
+            "type": "string",
+            "format": "boolean",
+            "description": "Define se a correção monetária deve ser aplicada"
           }
         }
       },
