@@ -1,169 +1,245 @@
----
-openapi: "3.0.1"
-info:
-  title: "Precfy API - Ofícios Requisitórios de Precatórios"
-  description: "API para extrair e estruturar dados de Ofícios Requisitórios de Precatórios a partir de arquivos PDF, retornando informações em JSON prontas para integração."
-  version: "1.0.0"
-  license:
-    name: "MIT"
-servers:
-  - url: "https://precfy-api.azurewebsites.net/api/{partnerId}/precatorio/"
-security:
-  - bearerAuth: []
-paths:
-  /parse:
-    post:
-      description: "Extrai dados estruturados de um Ofício de Requisição de Precatório a partir de um arquivo PDF."
-      requestBody:
-        description: "PDF do Ofício de Precatório e parâmetros opcionais de configuração"
-        required: true
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                file:
-                  type: string
-                  format: binary
-                  description: "Arquivo PDF para análise e extração"
-                CORRECAO_MONETARIA:
-                  type: boolean
-                  description: "Define se a correção monetária deve ser aplicada"
-                CALCULAR_IMPOSTOS:
-                  type: boolean
-                  description: "Define se os impostos devem ser calculados"
-                DESTACAR_HONORARIOS:
-                  type: boolean
-                  description: "Especifica se os honorários advocatícios devem ser destacados"
-                CREDOR_FULL_DATA:
-                  type: boolean
-                  description: "Inclui dados completos sobre o credor"
-                ADVOGADO_FULL_DATA:
-                  type: boolean
-                  description: "Inclui dados completos sobre o advogado"
-      responses:
-        "200":
-          description: "Dados extraídos do Ofício de Requisição de Precatório"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ParseResponse"
-        "400":
-          description: "Erro inesperado"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
-components:
-  schemas:
-    ParseResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-          description: "Indica se a operação foi bem-sucedida"
-        createdAt:
-          type: string
-          format: date-time
-          description: "Data e hora de criação da resposta"
-        responseInSeconds:
-          type: number
-          format: float
-          description: "Tempo de resposta da API em segundos"
-        cost:
-          type: number
-          format: float
-          description: "Custo estimado da operação"
-        fileHash:
-          type: string
-          description: "Hash do arquivo PDF processado"
-        content:
-          $ref: "#/components/schemas/Content"
-        warnings:
-          type: array
-          items:
-            type: string
-          description: "Avisos sobre o processamento"
-        errors:
-          type: array
-          items:
-            type: string
-          description: "Lista de erros ocorridos durante o processamento"
-    Content:
-      type: object
-      properties:
-        processoPrecatorioNumero:
-          type: string
-          description: "Número do processo de precatório"
-        tribunal:
-          type: string
-          description: "Tribunal responsável pelo processo"
-        dataExpedicao:
-          type: string
-          format: date
-          description: "Data de expedição do ofício"
-        valorTotalRequisitado:
-          type: number
-          format: float
-          description: "Valor total requisitado"
-        advogadoPatrono:
-          $ref: "#/components/schemas/Advogado"
-        requerentePrincipal:
-          type: string
-          description: "Nome do requerente principal"
-        devedor:
-          $ref: "#/components/schemas/Devedor"
-        credores:
-          type: array
-          items:
-            $ref: "#/components/schemas/Credor"
-          description: "Lista de credores envolvidos"
-    Advogado:
-      type: object
-      properties:
-        nome:
-          type: string
-          description: "Nome do advogado"
-        oab:
-          type: string
-          description: "Número de registro OAB"
-        cpf:
-          type: string
-          description: "CPF do advogado"
-    Devedor:
-      type: object
-      properties:
-        nome:
-          type: string
-          description: "Nome do devedor"
-        esfera:
-          type: string
-          description: "Esfera do devedor (ex: Federal)"
-    Credor:
-      type: object
-      properties:
-        nome:
-          type: string
-          description: "Nome do credor"
-        cpfCnpj:
-          type: string
-          description: "CPF ou CNPJ do credor"
-        valorRequisitado:
-          type: number
-          format: float
-          description: "Valor requisitado pelo credor"
-    Error:
-      type: object
-      properties:
-        error:
-          type: integer
-          format: int32
-          description: "Código do erro"
-        message:
-          type: string
-          description: "Descrição do erro"
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Precfy API - Ofícios Requisitórios de Precatórios",
+    "description": "API para extrair e estruturar dados de Ofícios Requisitórios de Precatórios a partir de arquivos PDF, retornando informações em JSON prontas para integração.",
+    "version": "1.0.0",
+    "license": {
+      "name": "MIT"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://precfy-api.azurewebsites.net/api/{partnerId}/precatorio/"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/parse": {
+      "post": {
+        "description": "Extrai dados estruturados de um Ofício de Requisição de Precatório a partir de um arquivo PDF.",
+        "requestBody": {
+          "description": "PDF do Ofício de Precatório e parâmetros opcionais de configuração",
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "Arquivo PDF para análise e extração"
+                  },
+                  "CORRECAO_MONETARIA": {
+                    "type": "boolean",
+                    "description": "Define se a correção monetária deve ser aplicada"
+                  },
+                  "CALCULAR_IMPOSTOS": {
+                    "type": "boolean",
+                    "description": "Define se os impostos devem ser calculados"
+                  },
+                  "DESTACAR_HONORARIOS": {
+                    "type": "boolean",
+                    "description": "Especifica se os honorários advocatícios devem ser destacados"
+                  },
+                  "CREDOR_FULL_DATA": {
+                    "type": "boolean",
+                    "description": "Inclui dados completos sobre o credor"
+                  },
+                  "ADVOGADO_FULL_DATA": {
+                    "type": "boolean",
+                    "description": "Inclui dados completos sobre o advogado"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Dados extraídos do Ofício de Requisição de Precatório",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ParseResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro inesperado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ParseResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Indica se a operação foi bem-sucedida"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Data e hora de criação da resposta"
+          },
+          "responseInSeconds": {
+            "type": "number",
+            "format": "float",
+            "description": "Tempo de resposta da API em segundos"
+          },
+          "cost": {
+            "type": "number",
+            "format": "float",
+            "description": "Custo estimado da operação"
+          },
+          "fileHash": {
+            "type": "string",
+            "description": "Hash do arquivo PDF processado"
+          },
+          "content": {
+            "$ref": "#/components/schemas/Content"
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Avisos sobre o processamento"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Lista de erros ocorridos durante o processamento"
+          }
+        }
+      },
+      "Content": {
+        "type": "object",
+        "properties": {
+          "processoPrecatorioNumero": {
+            "type": "string",
+            "description": "Número do processo de precatório"
+          },
+          "tribunal": {
+            "type": "string",
+            "description": "Tribunal responsável pelo processo"
+          },
+          "dataExpedicao": {
+            "type": "string",
+            "format": "date",
+            "description": "Data de expedição do ofício"
+          },
+          "valorTotalRequisitado": {
+            "type": "number",
+            "format": "float",
+            "description": "Valor total requisitado"
+          },
+          "advogadoPatrono": {
+            "$ref": "#/components/schemas/Advogado"
+          },
+          "requerentePrincipal": {
+            "type": "string",
+            "description": "Nome do requerente principal"
+          },
+          "devedor": {
+            "$ref": "#/components/schemas/Devedor"
+          },
+          "credores": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Credor"
+            },
+            "description": "Lista de credores envolvidos"
+          }
+        }
+      },
+      "Advogado": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string",
+            "description": "Nome do advogado"
+          },
+          "oab": {
+            "type": "string",
+            "description": "Número de registro OAB"
+          },
+          "cpf": {
+            "type": "string",
+            "description": "CPF do advogado"
+          }
+        }
+      },
+      "Devedor": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string",
+            "description": "Nome do devedor"
+          },
+          "esfera": {
+            "type": "string",
+            "description": "Esfera do devedor (ex: Federal)"
+          }
+        }
+      },
+      "Credor": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string",
+            "description": "Nome do credor"
+          },
+          "cpfCnpj": {
+            "type": "string",
+            "description": "CPF ou CNPJ do credor"
+          },
+          "valorRequisitado": {
+            "type": "number",
+            "format": "float",
+            "description": "Valor requisitado pelo credor"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Código do erro"
+          },
+          "message": {
+            "type": "string",
+            "description": "Descrição do erro"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}
