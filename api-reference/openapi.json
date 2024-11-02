@@ -29,33 +29,13 @@
             "multipart/form-data": {
               "schema": {
                 "type": "object",
-                "properties": [ {
+                "properties":  {
                   "file": {
                     "type": "string",
                     "format": "binary",
                     "description": "Arquivo PDF para análise e extração"
-                  },
-                  "CORRECAO_MONETARIA": {
-                    "type": "boolean",
-                    "description": "Define se a correção monetária deve ser aplicada"
-                  },
-                  "CALCULAR_IMPOSTOS": {
-                    "type": "boolean",
-                    "description": "Define se os impostos devem ser calculados"
-                  },
-                  "DESTACAR_HONORARIOS": {
-                    "type": "boolean",
-                    "description": "Especifica se os honorários advocatícios devem ser destacados"
-                  },
-                  "CREDOR_FULL_DATA": {
-                    "type": "boolean",
-                    "description": "Inclui dados completos sobre o credor"
-                  },
-                  "ADVOGADO_FULL_DATA": {
-                    "type": "boolean",
-                    "description": "Inclui dados completos sobre o advogado"
                   }
-                }]
+                }
               }
             }
           }
