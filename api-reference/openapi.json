@@ -29,7 +29,7 @@
             "multipart/form-data": {
               "schema": {
                 "type": "object",
-                "properties": {
+                "properties": [ {
                   "file": {
                     "type": "string",
                     "format": "binary",
@@ -55,7 +55,7 @@
                     "type": "boolean",
                     "description": "Inclui dados completos sobre o advogado"
                   }
-                }
+                }]
               }
             }
           }
