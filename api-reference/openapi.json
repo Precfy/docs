@@ -10,7 +10,7 @@
   },
   "servers": [
     {
-      "url": "https://precfy-api.azurewebsites.net/api/67158a3399a43a6f8fbd69ee/precatorio/"
+      "url": "https://precfy-api.azurewebsites.net/api/{partnerId}/precatorio/"
     }
   ],
   "security": [
@@ -21,7 +21,7 @@
   "paths": {
     "/plants": {
       "post": {
-        "description": "Creates a new plant in the store",
+        "description": "onde é isso?",
         "requestBody": {
           "description": "Plant to add to the store",
           "content": {
