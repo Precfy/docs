@@ -19,7 +19,7 @@
     }
   ],
   "paths": {
-    "/parse": {
+    "/precfy": {
       "post": {
         "description": "Extrai dados estruturados de um Ofício de Requisição de Precatório a partir de um arquivo PDF.",
         "requestBody": {
