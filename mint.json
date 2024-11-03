@@ -12,12 +12,6 @@
     "light": "#8477FF",
     "dark": "#5D4CFE"
   },
-  "topbarLinks": [
-    {
-      "name": "Support",
-      "url": "mailto:hi@mintlify.com"
-    }
-  ],
   "topbarCtaButton": {
     "name": "Dashboard",
     "url": "https://dashboard.mintlify.com"
@@ -53,6 +47,12 @@
         "essentials/settings",
         "essentials/navigation",
         "essentials/reusable-snippets"
+      ]
+    },
+    {
+      "group": "API Documentation",
+      "pages": [
+        "api-reference/introduction"
       ]
     },
     {
