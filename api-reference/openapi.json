@@ -52,6 +52,26 @@
             "type": "boolean",
             "format": "boolean",
             "description": "Define se a correção monetária deve ser aplicada"
+          },
+          "CALCULAR_IMPOSTOS": {
+            "type": "boolean",
+            "format": "boolean",
+            "description": "Define se os impostos devem ser calculados"
+          },
+          "DESTACAR_HONORARIOS": {
+            "type": "boolean",
+            "format": "boolean",
+            "description": "Especifica se os honorários advocatícios devem ser destacados"
+          },
+          "CREDOR_FULL_DATA": {
+            "type": "boolean",
+            "format": "boolean",
+            "description": "Inclui dados completos sobre o credor"
+          },
+          "ADVOGADO_FULL_DATA": {
+            "type": "boolean",
+            "format": "boolean",
+            "description": "Inclui dados completos sobre o advogado"
           }
         }
       },
