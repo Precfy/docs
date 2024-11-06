@@ -16,10 +16,10 @@
 		<text xml:space="preserve" font-family="'Arial Rounded MT Bold'" font-size="17.3" font-style="normal" font-weight="normal" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(51,51,51); fill-rule: nonzero; opacity: 1; white-space: pre;" ><tspan x="-27.19" y="5.43" >Precfy</tspan></text>
 </g>
 		<g transform="matrix(1 0 0 1 -38.2 0)" id="object-1"  >
-<rect style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(37,37,234); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  x="-4.8" y="-4.8" rx="0" ry="0" width="9.6" height="9.6" />
+<rect style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(37,37,234); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  x="-4.8" y="-4.8" rx="0" ry="0" width="20.0" height="20.0" />
 </g>
 		<g transform="matrix(-1 0 0 -1 -19 0)" id="object-2"  >
-<rect style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(2,37,122); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  x="-4.8" y="-4.8" rx="0" ry="0" width="9.6" height="9.6" />
+<rect style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(2,37,122); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  x="-4.8" y="-4.8" rx="0" ry="0" width="20.0" height="20.0" />
 </g>
 		<g transform="matrix(1 0 0 1 -28.6 -4.8)" id="object-3"  >
 <path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(166,166,241); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  transform=" translate(-14.4, -19.2)" d="M 9.601 19.2 L 19.201 9.599 L 19.201 19.2 L 9.601 28.799 L 9.601 19.2 Z" stroke-linecap="round" />
