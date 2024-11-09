@@ -141,6 +141,43 @@ Exemplo de Resposta Sucesso (200 OK)
 }
 ```
 
+| Campo                                      | Tipo de dado.              | Descrição                                                 |
+|--------------------------------------------|----------------------------|-----------------------------------------------------------|
+| `processoPrecatorioNumero`                 | String                     | Número do processo do precatório no formato padronizado.  |
+| `processoPrecatorioNumeroRaw`              | String                     | Número do processo do precatório sem formatação, contendo apenas dígitos.  |
+| `processoOriginario`                       | String                     | Número do processo originário do caso, formatado.  |
+| `processoOriginarioRaw`                    | String                     | Número do processo originário sem formatação.   |
+| `processoExecucaoCumprimentoSentenca`      | String                     | Número do processo de execução ou cumprimento de sentença, formatado.    |
+| `processoExecucaoCumprimentoSentencaRaw`   | String                     | Número do processo de execução ou cumprimento de sentença sem formatação.    |
+| `numeroRequisicao`                         | String                     | Número da requisição do precatório no tribunal.   |
+| `esfera`                                   | String                     | Esfera judicial em que o processo se encontra, como "FEDERAL" ou "ESTADUAL".  |
+| `natureza`                                 | String                     | Natureza do processo, como "COMUM" ou "ALIMENTAR".  |
+| `assunto`                                  | String                     | Assunto principal do caso, que pode incluir uma breve descrição, como "DESAPROPRIAÇÃO POR INTERESSE SOCIAL PARA REFORMA AGRÁRIA".   |
+| `incidentes`                               | String                     | Detalhes sobre incidentes processuais, se houver, ou "Sem Incidente" se não aplicável.  |
+| `vara`                                     | String                     | Vara judicial responsável pelo caso, incluindo especialização, se aplicável.  |
+| `cidade`                                   | String                     | Cidade em que o processo foi registrado ou está sendo julgado.   |
+| `estado`                                   | String                     | Estado da federação onde o processo está sendo conduzido. |
+| `advogadoPatrono`                          | Objeto                     | Dados do advogado principal que representa o caso, incluindo nome, número da OAB, número OAB sem formatação (`oabRaw`), CPF formatado e sem formatação (`cpfRaw`).        |
+| `requerentePrincipal`                      | String                     | Nome do requerente principal do processo.   |
+| `tribunal`                                 | String                     | Tribunal responsável pelo julgamento ou homologação do precatório, como "TRF1".  |
+| `devedor`                                  | Objeto                     | Informações sobre o devedor, incluindo o nome, sigla (se aplicável) e esfera judicial (ex: "FEDERAL").   |
+| `dataExpedicao`                            | Data (String)              | Data e hora de expedição do precatório no formato ISO 8601. |
+| `dataCadastro`                             | Data (String)              | Data e hora de cadastro do precatório no sistema, em formato ISO 8601. |
+| `valorTotalRequisitado`                    | Número (Float)             | Valor total requisitado no precatório.  |
+| `especieRequisicao`                        | String                     | Espécie de requisição, como "ORIGINAL" ou "SUPLEMENTAR". |
+| `superpreferencial`                        | Boolean                    | Indica se o precatório é superpreferencial (`true`) ou não (`false`).    |
+| `dataTransitoJulgadoEmbargos`              | Data (String)              | Data em que o trânsito em julgado dos embargos ocorreu, se aplicável, no formato ISO 8601.|
+| `dataAjuizamentoProcessoConhecimento`      | Data (String)              | Data de ajuizamento do processo de conhecimento.          |
+| `dataTransitoJulgadoProcessoConhecimento`  | Data (String)              | Data de trânsito em julgado do processo de conhecimento.  |
+| `dataDecursoPrazoConcordanciaComValorRequisitado`   | Data (String)              | Data limite para concordância com o valor requisitado, se aplicável.    |
+| `honorariosContratuaisDestacados`          | Boolean                    | Indica se os honorários contratuais são destacados (`true`) ou não (`false`).    |
+| `honorariosSucumbenciaisDestacados`        | Boolean                    | Indica se os honorários sucumbenciais são destacados (`true`) ou não (`false`).  |
+| `loa`                                      | Objeto                     | Dados da Lei Orçamentária Anual (LOA), contendo ano de orçamento, datas de início e fim do orçamento, e o limite de pagamento em formato ISO 8601.  |
+| `credores`                                 | Array de objetos           | Lista de credores envolvidos no processo, cada um contendo informações como ID, tipo (ex: "BENEFICIARIO"), CPF/CNPJ formatado e sem formatação (`cpfCnpjRaw`), tipo de pessoa (PF/PJ), nome, data de nascimento (se aplicável), idade, status, valores, impostos, renúncia, e percentual do credor.  |
+| `warnings`                                 | Array de Strings           | Lista de avisos sobre o processo ou a extração, se aplicável.  |
+| `errors`                                   | Array de Strings           | Lista de erros ocorridos na extração dos dados, se aplicável.  |
+
+
 ### Códigos de Status HTTP
 
 | Código | Significado           | Descrição |
