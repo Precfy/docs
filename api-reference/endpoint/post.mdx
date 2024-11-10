@@ -151,7 +151,7 @@ Exemplo de Resposta Sucesso (200 OK)
 | `content.processoExecucaoCumprimentoSentencaRaw`   | String                     | Número do processo de execução ou cumprimento de sentença sem formatação.    |
 | `content.numeroRequisicao`                         | String                     | Número da requisição do precatório no tribunal.   |
 | `content.esfera`                                   | String                     | Esfera judicial em que o processo se encontra, como "FEDERAL" ou "ESTADUAL".  |
-| `content.atureza`                                 | String                     | Natureza do processo, como "COMUM" ou "ALIMENTAR".  |
+| `content.atureza`                                  | String                     | Natureza do processo, como "COMUM" ou "ALIMENTAR".  |
 | `content.assunto`                                  | String                     | Assunto principal do caso, que pode incluir uma breve descrição, como por exemplo "DESAPROPRIAÇÃO POR INTERESSE SOCIAL PARA REFORMA AGRÁRIA"; "040104 - Aposentadoria Especial (Art. 57/8)". |
 | `content.incidentes`                               | String                     | Detalhes sobre incidentes processuais, se houver, ou "Sem Incidente" se não aplicável.  |
 | `content.vara`                                     | String                     | Vara judicial responsável pelo caso, incluindo especialização, se aplicável.  |
@@ -164,24 +164,46 @@ Exemplo de Resposta Sucesso (200 OK)
 | `content.advogadoPatrono.cpfRaw`                   | String                     | CPF sem formatação do advogado principal que representa o caso.       |
 | `content.requerentePrincipal`                      | String                     | Nome do requerente principal do processo.   |
 | `content.tribunal`                                 | String                     | Tribunal responsável pelo julgamento ou homologação do precatório, como "TRF1", "TRF2", "TRF3", "TRF4", "TRF5", "TRF6", "TJSP".  |
-| `content.devedor.nome`                             | String                     | Informações sobre o devedor, incluindo o nome, sigla (se aplicável) e esfera judicial (ex: "FEDERAL").   |
-| `content.devedor.sigla`                            | String                     | Informações sobre o devedor, incluindo o nome, sigla (se aplicável) e esfera judicial (ex: "FEDERAL").   |
-| `content.devedor.esfera`                           | String                     | Informações sobre o devedor, incluindo o nome, sigla (se aplicável) e esfera judicial (ex: "FEDERAL").   |
-| `dataExpedicao`                            | Data (String)              | Data e hora de expedição do precatório no formato ISO 8601. |
-| `dataCadastro`                             | Data (String)              | Data e hora de cadastro do precatório no sistema, em formato ISO 8601. |
-| `valorTotalRequisitado`                    | Número (Float)             | Valor total requisitado no precatório.  |
-| `especieRequisicao`                        | String                     | Espécie de requisição, como "ORIGINAL" ou "SUPLEMENTAR". |
-| `superpreferencial`                        | Boolean                    | Indica se o precatório é superpreferencial (`true`) ou não (`false`).    |
-| `dataTransitoJulgadoEmbargos`              | Data (String)              | Data em que o trânsito em julgado dos embargos ocorreu, se aplicável, no formato ISO 8601.|
-| `dataAjuizamentoProcessoConhecimento`      | Data (String)              | Data de ajuizamento do processo de conhecimento.          |
-| `dataTransitoJulgadoProcessoConhecimento`  | Data (String)              | Data de trânsito em julgado do processo de conhecimento.  |
-| `dataDecursoPrazoConcordanciaComValorRequisitado`   | Data (String)              | Data limite para concordância com o valor requisitado, se aplicável.    |
-| `honorariosContratuaisDestacados`          | Boolean                    | Indica se os honorários contratuais são destacados (`true`) ou não (`false`).    |
-| `honorariosSucumbenciaisDestacados`        | Boolean                    | Indica se os honorários sucumbenciais são destacados (`true`) ou não (`false`).  |
-| `loa`                                      | Objeto                     | Dados da Lei Orçamentária Anual (LOA), contendo ano de orçamento, datas de início e fim do orçamento, e o limite de pagamento em formato ISO 8601.  |
-| `credores`                                 | Array de objetos           | Lista de credores envolvidos no processo, cada um contendo informações como ID, tipo (ex: "BENEFICIARIO"), CPF/CNPJ formatado e sem formatação (`cpfCnpjRaw`), tipo de pessoa (PF/PJ), nome, data de nascimento (se aplicável), idade, status, valores, impostos, renúncia, e percentual do credor.  |
-| `warnings`                                 | Array de Strings           | Lista de avisos sobre o processo ou a extração, se aplicável.  |
-| `errors`                                   | Array de Strings           | Lista de erros ocorridos na extração dos dados, se aplicável.  |
+| `content.devedor.nome`                             | String                     | Nome do devedor do processo.   |
+| `content.devedor.sigla`                            | String                     | Sigla do devedor do processo.   |
+| `content.devedor.esfera`                           | String                     | Esfera judicial do devedor do processo (ex: "FEDERAL").   |
+| `content.dataExpedicao`                            | Data (String)              | Data e hora de expedição do precatório no formato ISO 8601. |
+| `content.dataCadastro`                             | Data (String)              | Data e hora de cadastro do precatório no sistema, em formato ISO 8601. |
+| `content.valorTotalRequisitado`                    | Número (Float)             | Valor total requisitado no precatório.  |
+| `content.especieRequisicao`                        | String                     | Espécie de requisição, como "ORIGINAL" ou "SUPLEMENTAR". |
+| `content.superpreferencial`                        | Boolean                    | Indica se o precatório é superpreferencial (`true`) ou não (`false`).    |
+| `content.dataTransitoJulgadoEmbargos`              | Data (String)              | Data em que o trânsito em julgado dos embargos ocorreu, se aplicável, no formato ISO 8601.|
+| `content.dataAjuizamentoProcessoConhecimento`      | Data (String)              | Data de ajuizamento do processo de conhecimento.          |
+| `content.dataTransitoJulgadoProcessoConhecimento`  | Data (String)              | Data de trânsito em julgado do processo de conhecimento.  |
+| `content.dataDecursoPrazoConcordanciaComValorRequisitado`   | Data (String)              | Data limite para concordância com o valor requisitado, se aplicável.    |
+| `content.honorariosContratuaisDestacados`          | Boolean                    | Indica se os honorários contratuais são destacados (`true`) ou não (`false`).    |
+| `content.honorariosSucumbenciaisDestacados`        | Boolean                    | Indica se os honorários sucumbenciais são destacados (`true`) ou não (`false`).  |
+| `content.loa.anoOrcamento`                         | String                     | Ano de orçamento do processo.   |
+| `content.loa.inicio`                               | Data (String)              | Data de início do orçamento.    |
+| `content.loa.fim`                                  | Data (String)              | Data de fim do orçamento.       |
+| `content.loa.limitePagamento`                      | Data (String)              | Datas de limite de pagamento.   |
+| `content.credores.id`                              | String                     | ID do Credor do processo.       |
+| `content.credores.tipo`                            | String                     | Tipo do Credor do processo (ex: "BENEFICIARIO", "HONORÁRIOS"). |
+| `content.credores.cpfCnpj`                         | String                     | CPF/CNPJ formatado do Credor do processo.  |
+| `content.credores.cpfCnpjRaw`                      | String                     | CPF/CNPJ sem formatação do Credor do processo.   |
+| `content.credores.tipoPessoa`                      | String                     | Tipo de pessoa do processo (ex: PF/PJ). |
+| `content.credores.nome`                            | String                     | Nome do Credor do processo. |
+| `content.credores.dataNascimento`                  | Data (String)              | Data de nascimento do Credor do processo (se aplicável).  |
+| `content.credores.idade`                           | String                     | Idade do Credor do processo.  |
+| `content.credores.preferenciaPor`                  | String                     | Preferência do Credor (ex: "IDOSO", "DOENÇA").  |
+| `content.credores.doencaGrave`                     | Boolean                    | Se o Credor é portador de Doença Grave.  |
+| `content.credores.portadorDeficiencia`             | Boolean                    | Se o Credor é portador de Deficiência. |
+| `content.credores.idoso`                           | Boolean                    | Se o Credor é Idoso. |
+| `content.credores.dataBase`                        | Data (String)              | Data base do processo.  |
+| `content.credores.valorPrincipal`                  | Número (Float)             | Valor principal do Processo sem os juros.  |
+| `content.credores.valorJuros`                      | Número (Float)             | Valor de juros do Processo.  |
+| `content.credoresimpostos.pss.incide`              | Array de objetos           | Se incide cobrança de PSS.   |
+| `content.credoresimpostos.pss.dataBase`            | Data (String)              | Data base do PSS.  |
+| `content.credoresimpostos.pss.valorInicialPSS`     | Número (Float)             | Valor inicial do PSS.  |
+| `content.credoresimpostos.iR_RRA.incide`           | Boolean                    | Se incide cobrança de RRA.  |
+| `content.credoresimpostos.iR_RRA.mesesExeAnterior` | String                     | Quantidade de meses do RRA.  |
+| `content.warnings`                                 | String                     | Lista de avisos sobre o processo ou a extração, se aplicável.  |
+| `content.errors`                                   | String                     | Lista de erros ocorridos na extração dos dados, se aplicável.  |
 
 
 ### Códigos de Status HTTP
