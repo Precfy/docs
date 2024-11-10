@@ -143,24 +143,30 @@ Exemplo de Resposta Sucesso (200 OK)
 
 | Campo                                      | Tipo de dado.              | Descrição                                                 |
 |--------------------------------------------|----------------------------|-----------------------------------------------------------|
-| `processoPrecatorioNumero`                 | String                     | Número do processo do precatório no formato padronizado.  |
-| `processoPrecatorioNumeroRaw`              | String                     | Número do processo do precatório sem formatação, contendo apenas dígitos.  |
-| `processoOriginario`                       | String                     | Número do processo originário do caso, formatado.  |
-| `processoOriginarioRaw`                    | String                     | Número do processo originário sem formatação.   |
-| `processoExecucaoCumprimentoSentenca`      | String                     | Número do processo de execução ou cumprimento de sentença, formatado.    |
-| `processoExecucaoCumprimentoSentencaRaw`   | String                     | Número do processo de execução ou cumprimento de sentença sem formatação.    |
-| `numeroRequisicao`                         | String                     | Número da requisição do precatório no tribunal.   |
-| `esfera`                                   | String                     | Esfera judicial em que o processo se encontra, como "FEDERAL" ou "ESTADUAL".  |
-| `natureza`                                 | String                     | Natureza do processo, como "COMUM" ou "ALIMENTAR".  |
-| `assunto`                                  | String                     | Assunto principal do caso, que pode incluir uma breve descrição, como "DESAPROPRIAÇÃO POR INTERESSE SOCIAL PARA REFORMA AGRÁRIA".   |
-| `incidentes`                               | String                     | Detalhes sobre incidentes processuais, se houver, ou "Sem Incidente" se não aplicável.  |
-| `vara`                                     | String                     | Vara judicial responsável pelo caso, incluindo especialização, se aplicável.  |
-| `cidade`                                   | String                     | Cidade em que o processo foi registrado ou está sendo julgado.   |
-| `estado`                                   | String                     | Estado da federação onde o processo está sendo conduzido. |
-| `advogadoPatrono`                          | Objeto                     | Dados do advogado principal que representa o caso, incluindo nome, número da OAB, número OAB sem formatação (`oabRaw`), CPF formatado e sem formatação (`cpfRaw`).        |
-| `requerentePrincipal`                      | String                     | Nome do requerente principal do processo.   |
-| `tribunal`                                 | String                     | Tribunal responsável pelo julgamento ou homologação do precatório, como "TRF1", "TRF2", "TRF3", "TRF4", "TRF5", "TRF6" "TJSP".  |
-| `devedor`                                  | Objeto                     | Informações sobre o devedor, incluindo o nome, sigla (se aplicável) e esfera judicial (ex: "FEDERAL").   |
+| `content.processoPrecatorioNumero`                 | String                     | Número do processo do precatório no formato padronizado.  |
+| `content.processoPrecatorioNumeroRaw`              | String                     | Número do processo do precatório sem formatação, contendo apenas dígitos.  |
+| `content.processoOriginario`                       | String                     | Número do processo originário do caso, formatado.  |
+| `content.processoOriginarioRaw`                    | String                     | Número do processo originário sem formatação.   |
+| `content.processoExecucaoCumprimentoSentenca`      | String                     | Número do processo de execução ou cumprimento de sentença, formatado.    |
+| `content.processoExecucaoCumprimentoSentencaRaw`   | String                     | Número do processo de execução ou cumprimento de sentença sem formatação.    |
+| `content.numeroRequisicao`                         | String                     | Número da requisição do precatório no tribunal.   |
+| `content.esfera`                                   | String                     | Esfera judicial em que o processo se encontra, como "FEDERAL" ou "ESTADUAL".  |
+| `content.atureza`                                 | String                     | Natureza do processo, como "COMUM" ou "ALIMENTAR".  |
+| `content.assunto`                                  | String                     | Assunto principal do caso, que pode incluir uma breve descrição, como por exemplo "DESAPROPRIAÇÃO POR INTERESSE SOCIAL PARA REFORMA AGRÁRIA"; "040104 - Aposentadoria Especial (Art. 57/8)". |
+| `content.incidentes`                               | String                     | Detalhes sobre incidentes processuais, se houver, ou "Sem Incidente" se não aplicável.  |
+| `content.vara`                                     | String                     | Vara judicial responsável pelo caso, incluindo especialização, se aplicável.  |
+| `content.cidade`                                   | String                     | Cidade em que o processo foi registrado ou está sendo julgado.   |
+| `content.estado`                                   | String                     | Estado da federação onde o processo está sendo conduzido. |
+| `content.advogadoPatrono.nome`                     | String                     | Nome do advogado principal que representa o caso.         |
+| `content.advogadoPatrono.oab`                      | String                     | OAB do advogado principal que representa o caso.          |
+| `content.advogadoPatrono.oabRaw`                   | String                     | OAB sem formatação do advogado principal que representa o caso.  |
+| `content.advogadoPatrono.cpf`                      | String                     | CPF do advogado principal que representa o caso.       |
+| `content.advogadoPatrono.cpfRaw`                   | String                     | CPF sem formatação do advogado principal que representa o caso.       |
+| `content.requerentePrincipal`                      | String                     | Nome do requerente principal do processo.   |
+| `content.tribunal`                                 | String                     | Tribunal responsável pelo julgamento ou homologação do precatório, como "TRF1", "TRF2", "TRF3", "TRF4", "TRF5", "TRF6", "TJSP".  |
+| `content.devedor.nome`                             | String                     | Informações sobre o devedor, incluindo o nome, sigla (se aplicável) e esfera judicial (ex: "FEDERAL").   |
+| `content.devedor.sigla`                            | String                     | Informações sobre o devedor, incluindo o nome, sigla (se aplicável) e esfera judicial (ex: "FEDERAL").   |
+| `content.devedor.esfera`                           | String                     | Informações sobre o devedor, incluindo o nome, sigla (se aplicável) e esfera judicial (ex: "FEDERAL").   |
 | `dataExpedicao`                            | Data (String)              | Data e hora de expedição do precatório no formato ISO 8601. |
 | `dataCadastro`                             | Data (String)              | Data e hora de cadastro do precatório no sistema, em formato ISO 8601. |
 | `valorTotalRequisitado`                    | Número (Float)             | Valor total requisitado no precatório.  |
