@@ -150,8 +150,8 @@ Exemplo de Resposta Sucesso (200 OK)
 | `content.processoExecucaoCumprimentoSentenca`      | String                     | Número do processo de execução ou cumprimento de sentença, formatado.    |
 | `content.processoExecucaoCumprimentoSentencaRaw`   | String                     | Número do processo de execução ou cumprimento de sentença sem formatação.    |
 | `content.numeroRequisicao`                         | String                     | Número da requisição do precatório no tribunal.   |
-| `content.esfera`                                   | String                     | Esfera judicial em que o processo se encontra, como "FEDERAL" ou "ESTADUAL".  |
-| `content.atureza`                                  | String                     | Natureza do processo, como "COMUM" ou "ALIMENTAR".  |
+| `content.esfera`                                   | String                     | Esfera judicial em que o processo se encontra, como "FEDERAL", "ESTADUAL" ou "MUNICIPAL".  |
+| `content.natureza`                                  | String                     | Natureza do processo, como "COMUM", "ALIMENTAR" ou "COMUM_TRIBUTARIO".  |
 | `content.assunto`                                  | String                     | Assunto principal do caso, que pode incluir uma breve descrição, como por exemplo "DESAPROPRIAÇÃO POR INTERESSE SOCIAL PARA REFORMA AGRÁRIA"; "040104 - Aposentadoria Especial (Art. 57/8)". |
 | `content.incidentes`                               | String                     | Detalhes sobre incidentes processuais, se houver, ou "Sem Incidente" se não aplicável.  |
 | `content.vara`                                     | String                     | Vara judicial responsável pelo caso, incluindo especialização, se aplicável.  |
@@ -197,13 +197,13 @@ Exemplo de Resposta Sucesso (200 OK)
 | `content.credores.dataBase`                        | Data (String)              | Data base do processo.  |
 | `content.credores.valorPrincipal`                  | Número (Float)             | Valor principal do Processo sem os juros.  |
 | `content.credores.valorJuros`                      | Número (Float)             | Valor de juros do Processo.  |
-| `content.credoresimpostos.pss.incide`              | Array de objetos           | Se incide cobrança de PSS.   |
-| `content.credoresimpostos.pss.dataBase`            | Data (String)              | Data base do PSS.  |
-| `content.credoresimpostos.pss.valorInicialPSS`     | Número (Float)             | Valor inicial do PSS.  |
-| `content.credoresimpostos.iR_RRA.incide`           | Boolean                    | Se incide cobrança de RRA.  |
-| `content.credoresimpostos.iR_RRA.mesesExeAnterior` | Array de objetos           | Quantidade de meses do  |
-| `content.warnings`                                 | Array de Strings           | Lista de avisos sobre o processo ou a extração, se aplicável.  |
-| `content.errors`                                   | Array de Strings           | Lista de erros ocorridos na extração dos dados, se aplicável.  |
+| `content.credores.impostos.pss.incide`              | Array de objetos           | Se incide cobrança de PSS.   |
+| `content.credores.impostos.pss.dataBase`            | Data (String)              | Data base do PSS.  |
+| `content.credores.impostos.pss.valorInicialPSS`     | Número (Float)             | Valor inicial do PSS.  |
+| `content.credores.impostos.iR_RRA.incide`           | Boolean                    | Se incide cobrança de RRA.  |
+| `content.credores.impostos.iR_RRA.mesesExeAnterior` | String                     | Quantidade de meses do RRA.  |
+| `content.warnings`                                 | String                     | Lista de avisos sobre o processo ou a extração, se aplicável.  |
+| `content.errors`                                   | String                     | Lista de erros ocorridos na extração dos dados, se aplicável.  |
 
 
 ### Códigos de Status HTTP
