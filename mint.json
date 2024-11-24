@@ -30,18 +30,19 @@
     }
   ],
   "navigation": [
+  {
+      "group": "Endpoint Examples",
+      "pages": [
+        "api-reference/endpoint/post"
+      ]
+    },
     {
       "group": "API Documentation",
       "pages": [
         "api-reference/introduction"
       ]
-    },
-    {
-      "group": "Endpoint Examples",
-      "pages": [
-        "api-reference/endpoint/post"
-      ]
     }
+    
   ],
   "footerSocials": {
     "x": "https://x.com/mintlify",
