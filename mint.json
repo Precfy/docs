@@ -13,8 +13,8 @@
     "dark": "#5D4CFE"
   },
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "name": "Contrate Agora!",
+    "url": "https://api.whatsapp.com/send?phone=5511999999999"
   },
   "tabs": [
     {
